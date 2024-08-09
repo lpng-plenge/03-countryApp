@@ -1,0 +1,66 @@
+<ng-template #loading>
+  <div class="alert alert-info text-center">
+    Wait Please
+  </div>
+</ng-template>
+
+<div *ngIf="country; else loading">
+  <div class="row">
+    <div class="col-12">
+      <h2>Country <strong>{{country.name.common}}</strong></h2>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <h3>Flag</h3>
+      <img [src]="country.flags.svg" [alt]="country.name.common" class="img-thumbnail">
+    </div>
+
+    <div class="col">
+      <h3>Information</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Official name: </strong> {{country.name.official}}
+        </li>
+
+        <li class="list-group-item">
+          <strong>Capital name: </strong> {{country.capital}}
+        </li>
+
+        <li class="list-group-item">
+          <strong>Population: </strong> {{country.population | number}}
+        </li>
+
+        <li class="list-group-item">
+          <strong>Code: </strong> {{country.cca3}}
+        </li>
+
+        <li class="list-group-item">
+          <strong>Region: </strong> {{country.region}}
+        </li>
+
+        <li class="list-group-item">
+          <strong>Languages: </strong> {{country.languages.spa}}
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <div class="row mt-2">
+    <div class="col">
+      <h3>Translations</h3>
+
+      <div class="d-flex flex-wrap">
+        <span *ngFor="let key of getTranslationKeys()" class="badge bg-primary m-1">
+          {{ country.translations[key].common }}
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
